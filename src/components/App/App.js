@@ -8,10 +8,10 @@ import PokeContainer from '../PokeContainer/PokeContainer';
 import './App.css';
 
 class App extends Component {
-  async componentDidMount() {
-    const pokeData = await fetchPokeData();
-    this.props.populatePageData(pokeData);
-  }
+  // async componentDidMount() {
+  //   const pokeData = await fetchPokeData();
+  //   this.props.populatePageData(pokeData);
+  // }
 
   render() {
     return (
@@ -24,9 +24,9 @@ class App extends Component {
   }
 }
 
-export const mapDispatchToProps = dispatch => ({
-  populatePageData: pokeData => dispatch(populatePage(pokeData))
-});
+// export const mapDispatchToProps = dispatch => ({
+//   populatePageData: pokeData => dispatch(populatePage(pokeData))
+// });
 
 export const mapStateToProps = state => ({
   types: state.types
@@ -34,5 +34,5 @@ export const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  mapDispatchToProps
+  null
 )(App);
