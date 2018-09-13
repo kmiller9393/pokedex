@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
-import './App.css';
-import FakeContainer from '../../containers/FakeContainer/';
 import { connect } from 'react-redux';
 import { populatePage } from '../../actions';
 import { fetchPokeData } from '../../apiCalls';
+import Loading from '../Loading/Loading';
+import PokeContainer from '../PokeContainer/PokeContainer';
+
+import './App.css';
 
 class App extends Component {
   async componentDidMount() {
@@ -14,8 +16,8 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <h1 className="header"> POKéDEX </h1>
-        {/* <FakeContainer /> */}
+        {this.props.types.length && <h1 className="header"> POKéDEX </h1>}
+        <Loading />
       </div>
     );
   }
@@ -25,7 +27,11 @@ export const mapDispatchToProps = dispatch => ({
   populatePageData: pokeData => dispatch(populatePage(pokeData))
 });
 
+export const mapStateToProps = state => ({
+  types: state.types
+});
+
 export default connect(
-  null,
+  mapStateToProps,
   mapDispatchToProps
 )(App);
