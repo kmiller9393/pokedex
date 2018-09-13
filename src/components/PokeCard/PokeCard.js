@@ -22,7 +22,6 @@ class PokeCard extends Component {
   }
 
   fetchPokeTypeData = async pokemonArray => {
-    console.log(pokemonArray);
     const singleIds = pokemonArray.map(async id => {
       const url = `http://localhost:3001/pokemon/${id}`;
       const response = await fetch(url);
@@ -40,7 +39,6 @@ class PokeCard extends Component {
   };
 
   render() {
-    console.log(this.props);
     const pokemon = this.state.typeData.map(pokemon => (
       <div>
         <p>{pokemon.name}</p>
