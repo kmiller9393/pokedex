@@ -1,6 +1,6 @@
 // export const fakeAction = () => ({ type: 'FAKE'})
 
-export const populatePage = pokeData => ({
+export const populatePage = types => ({
   type: 'POPULATE_PAGE',
-  pokeData
+  types
 });
