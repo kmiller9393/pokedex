@@ -1,8 +1,8 @@
-import { combineReducers } from 'redux'
-import fakeReducer from './fake-reducer'
+// import { combineReducers } from 'redux'
+// import fakeReducer from './fake-reducer'
 
-const rootReducer = combineReducers({
-  fake: fakeReducer
-})
+// const rootReducer = combineReducers({
+//   fake: fakeReducer
+// })
 
-export default rootReducer
+// export default rootReducer
