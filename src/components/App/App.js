@@ -18,6 +18,7 @@ class App extends Component {
       <div className="App">
         {this.props.types.length && <h1 className="header"> POKéDEX </h1>}
         <Loading />
+        <PokeContainer />
       </div>
     );
   }

@@ -1,9 +1,23 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import PokeCard from '../PokeCard/PokeCard';
+import './PokeContainer.css';
 
-export default class PokeContainer extends Component {
+class PokeContainer extends Component {
   render() {
-    // const pokeCards =
-    return <div />;
+    const { types } = this.props;
+    const pokeCards = types.map((type, index) => (
+      <PokeCard type={type.name} key={index} />
+    ));
+    return <div className="poke-container">{pokeCards}</div>;
   }
 }
+
+export const mapStateToProps = state => ({
+  types: state.types
+});
+
+export default connect(
+  mapStateToProps,
+  null
+)(PokeContainer);
