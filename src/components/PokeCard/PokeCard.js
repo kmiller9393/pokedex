@@ -6,37 +6,65 @@ class PokeCard extends Component {
   constructor() {
     super();
     this.state = {
-      toggle: false
+      toggle: false,
+      currentView: '',
+      normal: 0,
+      fighting: 1,
+      flying: 2,
+      poison: 3,
+      ground: 4,
+      rock: 5,
+      bug: 6,
+      ghost: 7,
+      steel: 8,
+      typeData: []
     };
   }
 
   fetchPokeTypeData = async pokemonArray => {
     console.log(pokemonArray);
-    pokemonArray.map(id => {
-      const singleIds = id.map(async id => {
-        const url = `http://localhost:3001/pokemon/${id}`;
-        const response = await fetch(url);
-        const result = await response.json();
-        console.log(result);
-        return result;
-      });
-      return Promise.all(singleIds);
+    const singleIds = pokemonArray.map(async id => {
+      const url = `http://localhost:3001/pokemon/${id}`;
+      const response = await fetch(url);
+      const result = await response.json();
+
+      return result;
     });
+    return Promise.all(singleIds);
+  };
+
+  handleClick = async pokemonArray => {
+    const fetchedData = await this.fetchPokeTypeData(pokemonArray);
+
+    this.setState({ typeData: fetchedData });
   };
 
   render() {
-    const pokemonArray = this.props.types.map(type => type.pokemon);
-    console.log(pokemonArray);
+    console.log(this.props);
+    const pokemon = this.state.typeData.map(pokemon => (
+      <div>
+        <p>{pokemon.name}</p>
+        <p>{pokemon.weight}</p>
+        <img src={pokemon.sprites.front_default} />
+      </div>
+    ));
     return (
       <div
         className="poke-card"
         onClick={() =>
-          this.setState({ toggle: !this.state.toggle }, () =>
-            this.fetchPokeTypeData(pokemonArray)
+          this.setState(
+            { toggle: !this.state.toggle, currentView: this.props.type },
+            () =>
+              this.handleClick(
+                this.props.types[this.state[this.state.currentView]].pokemon
+              )
           )
         }
       >
-        <h2>{this.props.type}</h2>
+        <h2 className={this.state.toggle ? 'type-title' : ''}>
+          {this.props.type}
+        </h2>
+        {this.state.toggle && <div>{pokemon}</div>}
       </div>
     );
   }

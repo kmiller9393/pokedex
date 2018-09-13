@@ -21,11 +21,7 @@ class PokeContainer extends Component {
   render() {
     const { types } = this.props;
     const pokeCards = types.map((type, index) => (
-      <PokeCard
-        type={type.name}
-        key={index}
-        getPokeInfo={type => this.getPokeInfo(type)}
-      />
+      <PokeCard type={type.name} key={index} />
     ));
     return <div className="poke-container">{pokeCards}</div>;
   }

@@ -3,3 +3,7 @@
   border: 1px solid black;
   width: 33.18%;
 }
+
+.type-title {
+  display: none;
+}
