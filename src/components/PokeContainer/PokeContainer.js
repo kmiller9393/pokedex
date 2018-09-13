@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PokeCard from '../PokeCard/PokeCard';
 import { populatePage } from '../../actions';
-// import { fetchPokeData } from '../../apiCalls';
 import './PokeContainer.css';
 
 class PokeContainer extends Component {
