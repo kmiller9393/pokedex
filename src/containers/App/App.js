@@ -9,7 +9,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        {this.props.types.length && <h1 className="header"> POKéDEX </h1>}
+        {this.props.types && <h1 className="header"> POKéDEX </h1>}
         <Loading />
         <PokeContainer />
       </div>

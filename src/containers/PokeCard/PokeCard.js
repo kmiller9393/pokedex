@@ -39,8 +39,8 @@ class PokeCard extends Component {
   };
 
   render() {
-    const pokemon = this.state.typeData.map(pokemon => (
-      <div>
+    const pokemon = this.state.typeData.map((pokemon, index) => (
+      <div key={index}>
         <p>{pokemon.name}</p>
         <p>{pokemon.weight}</p>
         <img src={pokemon.sprites.front_default} />
@@ -62,7 +62,9 @@ class PokeCard extends Component {
         <h2 className={this.state.toggle ? 'type-title' : ''}>
           {this.props.type}
         </h2>
-        {this.state.toggle && <div>{pokemon}</div>}
+        {this.state.toggle && (
+          <div className="pokemon-after-container">{pokemon}</div>
+        )}
       </div>
     );
   }

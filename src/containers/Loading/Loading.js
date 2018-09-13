@@ -4,17 +4,10 @@ import pikachu from '../../images/loading.gif';
 import './Loading.css';
 
 class Loading extends Component {
-  constructor() {
-    super();
-    this.state = {
-      isLoading: false
-    };
-  }
-
   render() {
     return (
       <div>
-        {!this.props.types.length && (
+        {!this.props.types && (
           <img className="loading-gif" src={pikachu} alt="loading screen" />
         )}
       </div>

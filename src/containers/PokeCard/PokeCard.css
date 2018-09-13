@@ -1,9 +1,15 @@
 .poke-card {
   background-color: white;
   border: 1px solid black;
+  overflow: scroll;
   width: 33.18%;
 }
 
 .type-title {
   display: none;
+}
+
+.pokemon-after-container {
+  max-height: 300px;
+  overflow: scroll;
 }
